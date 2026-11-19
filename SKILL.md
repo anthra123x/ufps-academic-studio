@@ -1,25 +1,30 @@
 ---
-name: ufps-academic-pdf
+name: ufps-academic-studio
 description: >-
-  Diseño, maquetación y compilación de documentos académicos en PDF de alta gama
-  (guías de estudio oral en tablero, trabajos de investigación formal en APA 7ma edición,
-  y solucionarios de talleres/exámenes) para la Universidad Francisco de Paula Santander (UFPS)
-  Seccional Ocaña, utilizando CSS Paged Media (WeasyPrint) y Chromium Headless.
+  Diseño, maquetación y generación integral de documentos académicos en PDF (guías de estudio oral en tablero,
+  trabajos de investigación formal en APA 7ma edición, solucionarios) y presentaciones panorámicas 16:9
+  (PowerPoint PPTX con plantilla institucional UFPS, badges de orador cronometrados y diagramas técnicos vectoriales
+  sin AI-slop) para la Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña.
 ---
 
-# UFPS Academic PDF Designer: Estándar Editorial Universitario
+# UFPS Academic Studio: Suite Editorial Universitaria
 
-Esta skill proporciona el sistema de diseño visual, parámetros tipográficos, normas editoriales (APA 7ma edición) y scripts de automatización para generar documentos académicos en PDF de máxima calidad (calificación 5.0) para los planes de estudio de la **Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña**, específicamente en el área de **Ingeniería de Sistemas** y ciencias exactas.
+Esta skill proporciona el ecosistema integral de diseño, maquetación, estándares visuales y motores de automatización en Python para producir tanto **documentos académicos en PDF** como **presentaciones panorámicas en PowerPoint (PPTX)** con calificación de excelencia (5.0) para la **Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña**, específicamente en el área de **Ingeniería de Sistemas** y ciencias exactas.
 
 ---
 
 ## 1. Cuándo Activar esta Skill
 
 Activa esta skill inmediatamente cuando el usuario solicite:
-- **Guías de estudio oral para exposiciones magistrales** (con diapositivas o exposiciones en tablero sin diapositivas).
-- **Trabajos escritos de investigación formal** (parciales teóricos, informes de fin de semestre, entregas de 40%/60% con normas APA 7ma edición).
-- **Solucionarios de talleres prácticos y exámenes** (matemáticas discretas, estructuras de datos, cálculo, física, ingeniería de software).
-- **Compilación de documentos HTML a PDF** con paginación avanzada, encabezados institucionales dinámicos y diseño editorial estricto.
+1. **Documentos Académicos en PDF:**
+   - Guías de estudio individual cronometradas para exposiciones (en tablero sin diapositivas o como apoyo).
+   - Trabajos de investigación formal (normas APA 7ma edición, portadas institucionales, tablas de contenido sincronizadas en dos fases).
+   - Solucionarios de talleres, parciales y exámenes prácticos (matemáticas discretas, estructuras de datos, algoritmia, redes).
+2. **Presentaciones PowerPoint (PPTX 16:9):**
+   - Diapositivas panorámicas con la plantilla oficial UFPS Seccional Ocaña.
+   - Distribución cronometrada y badges de orador (`MÓDULO XX | ESTUDIANTE [00:00 - 03:00]`).
+   - Sustitución de ilustraciones genéricas/alucinadas por **diagramas técnicos vectoriales de ingeniería** (1200x900, 4:3, HTML/CSS Grid compilados a PNG).
+   - Auditoría estricta de contraste (cero textos blancos sobre fondos claros).
 
 ---
 
@@ -28,29 +33,27 @@ Activa esta skill inmediatamente cuando el usuario solicite:
 ### 2.1. Paleta de Colores Oficial
 | Token | Código HEX | Rol y Aplicación |
 | :--- | :---: | :--- |
-| `UFPS_RED` | `#C8102E` (o `#CC0000`) | Acentos principales, líneas divisorias H1, distintivos de orador, encabezados de examen. |
-| `SLATE_TITLE` | `#0F172A` | Títulos principales, fondo de cajas de pizarra (*blackboard*), texto de máxima jerarquía. |
-| `SLATE_BODY` | `#1E293B` | Párrafos de texto, celdas de tablas, cuerpo técnico justificado. |
-| `SLATE_MUTED` | `#64748B` | Textos de encabezados secundarios, pies de página, etiquetas de metadatos. |
-| `BORDER_SUBTLE`| `#CBD5E1` | Separadores de página, bordes de celdas en tablas analíticas. |
+| `UFPS_RED` | `#C8102E` / `#CC0000` | Rojo Institucional UFPS. Acentos, separadores H1, barras laterales, badges. |
+| `SLATE_TITLE` | `#0F172A` | Títulos principales, fondos oscuros de pizarra escolar, contraste máximo. |
+| `SLATE_BODY` | `#1E293B` / `#334155` | Cuerpo de texto, viñetas de diapositivas, contenido técnico justificado. |
+| `SLATE_MUTED` | `#64748B` | Subtítulos secundarios, etiquetas de tiempo, encabezados de pie de página. |
+| `BORDER_SUBTLE`| `#CBD5E1` / `#E2E8F0` | Retículas de tablas, separadores de página, bordes de tarjetas. |
 | `BG_CARD` | `#F8FAFC` | Fondo de guiones orales, cajas de código y tarjetas de conceptos. |
-| `BG_BLACKBOARD`| `#0F172A` | Fondo de pizarra con tiza para instrucciones de dibujo en tablero. |
-| `BORDER_CHALK` | `#38BDF8` | Borde y acento cian brillante tipo marcador/tiza de borrado en seco. |
+| `BG_BLACKBOARD`| `#0F172A` | Fondo de pizarra para instrucciones de trazo con marcador en clase. |
+| `BORDER_CHALK` | `#38BDF8` | Acento cian brillante simulando marcador de borrado en seco / tiza. |
 | `BG_ALERT` | `#FEF2F2` | Fondo de cajas de preguntas trampa de sustentación individual. |
-| `BORDER_ALERT`| `#EF4444` | Borde rojo de alerta para objeciones docentes. |
+| `BORDER_ALERT`| `#EF4444` | Borde rojo para destacar objeciones docentes y defensas de 5.0. |
 
-### 2.2. Logotipos y Recursos Gráficos
-Los archivos de imagen oficiales se encuentran disponibles en:
-- `assets/logo_ufpso.png`: Escudo y logotipo oficial de la Seccional Ocaña en alta definición.
-- `assets/logo_ufps.png`: Escudo heráldico tradicional vectorizado/rasterizado.
+### 2.2. Recursos Gráficos
+- `assets/logo_ufpso.png`: Escudo y logotipo oficial de la Seccional Ocaña en alta resolución.
+- `assets/logo_ufps.png`: Escudo heráldico tradicional.
+- `templates/ufps_panoramica_base.pptx`: Plantilla OpenXML panorámica oficial de 17 diapositivas con logotipo a color oficial UFPS en la esquina superior derecha (`x=9454331, y=314675, cx=2405046, cy=650058`) y acreditación Icontec / IQNET.
 
 ---
 
-## 3. Paginación y CSS Paged Media (`@page`)
+## 3. Generación de Documentos PDF (CSS Paged Media)
 
-El motor primario recomendado es **WeasyPrint**, debido a su soporte nativo para la especificación W3C de CSS Paged Media, permitiendo encabezados y pies de página sin requerir hacks de JavaScript.
-
-### Configuración Base de Página (Tamaño Carta / Letter)
+### 3.1. Estructura Base de Página (@page)
 ```css
 @page {
     size: letter;
@@ -67,7 +70,7 @@ El motor primario recomendado es **WeasyPrint**, debido a su soporte nativo para
         padding-bottom: 4px;
     }
     @top-right {
-        content: "[ASIGNATURA] · [TIPO DE ACTIVIDAD]";
+        content: "[ASIGNATURA] · [EVALUACIÓN]";
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 7.2pt;
         font-weight: 700;
@@ -77,7 +80,7 @@ El motor primario recomendado es **WeasyPrint**, debido a su soporte nativo para
         padding-bottom: 4px;
     }
     @bottom-left {
-        content: "[Título del Módulo o Trabajo]";
+        content: "[Título del Módulo o Documento]";
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 7.2pt;
         font-style: italic;
@@ -97,93 +100,49 @@ El motor primario recomendado es **WeasyPrint**, debido a su soporte nativo para
 }
 ```
 
----
+### 3.2. Componentes Visuales Exclusivos
+- **Caja de Pizarra (`.blackboard-box`):** Fondo `#0F172A`, borde `#38BDF8`, texto claro con instrucciones exactas de qué dibujar en el pizarrón.
+- **Caja de Guion Oral (`.speech-box`):** Fondo `#F8FAFC`, barra lateral `#C8102E`, con el discurso exacto segundo a segundo.
+- **Caja Trampa (`.trap-box`):** Fondo `#FEF2F2`, borde `#EF4444`, preguntas complejas del profesor con respuestas de 5.0.
+- **Tabla de Trazabilidad (`.trace-table`):** Encabezados oscuros `#1E293B`, filas alternas `#F8FAFC`, bordes nítidos `#CBD5E1`.
+- **Citas APA 7ma (`.apa-reference`):** Sangría francesa (`padding-left: 2em; text-indent: -2em;`).
 
-## 4. Componentes Estilísticos Reutilizables
-
-### 4.1. Caja de Pizarra (*Blackboard Box*)
-Esencial para exposiciones sin diapositivas. Indica al estudiante exactamente qué diagramas trazar en el pizarrón:
-```html
-<div class="blackboard-box">
-    <h4>¿QUÉ DIBUJAR EN EL TABLERO CON MARCADOR?</h4>
-    <p>1. Traza el árbol con raíz...</p>
-    <p>2. Dibuja la tabla de seguimiento con 3 columnas...</p>
-</div>
-```
-
-### 4.2. Caja de Guion Oral Cronometrado (*Speech Box*)
-Proporciona el discurso continuo en primera persona para que el expositor hable sin titubear:
-```html
-<div class="speech-box">
-    <div class="speech-label">GUION ORAL (MINUTO 00:00 – 01:30)</div>
-    <p>"Buenos días, profesor y compañeros. En este módulo explicaré el recorrido en inorden..."</p>
-</div>
-```
-
-### 4.3. Batería de Preguntas Trampa & Defensa 5.0 (*Trap Box*)
-Blinda al estudiante ante cuestionamientos difíciles del docente evaluador:
-```html
-<div class="trap-box">
-    <span class="trap-question">Pregunta Trampa del Docente: ¿Por qué no es posible reconstruir un árbol binario conociendo solo Preorden y Postorden?</span>
-    <span class="trap-answer"><strong>Respuesta 5.0:</strong> Porque si un nodo posee un único hijo, no es posible determinar formalmente si es izquierdo o derecho...</span>
-</div>
-```
-
-### 4.4. Tabla de Trazabilidad Algorítmica (*Trace Table*)
-Para documentar ejecuciones paso a paso de pilas, colas o matrices de adyacencia:
-```html
-<table class="trace-table">
-    <thead>
-        <tr><th>Paso</th><th>Elemento Procesado</th><th>Estado de la Estructura</th><th>Salida Generada</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>1</td><td>Nodo Raíz (A)</td><td>[B, C]</td><td>A</td></tr>
-    </tbody>
-</table>
-```
-
----
-
-## 5. Normas APA 7ma Edición para Trabajos Escritos
-
-Cuando el requerimiento sea un trabajo de investigación formal:
-1. **Estructura Estándar:** Portada Institucional $\rightarrow$ Tabla de Contenido Analítica $\rightarrow$ Introducción $\rightarrow$ Objetivos $\rightarrow$ Marco Teórico $\rightarrow$ Desarrollo Técnico $\rightarrow$ Caso Práctico $\rightarrow$ Conclusiones $\rightarrow$ Referencias Bibliográficas.
-2. **Sincronización en Dos Fases:** Utiliza un script que ejecute una primera pasada para mapear el número de página de cada encabezado (`H1`, `H2`) y genere un índice con los números reales antes de compilar el PDF definitivo.
-3. **Referencias con Sangría Francesa:**
-   ```css
-   .apa-reference {
-       padding-left: 2em;
-       text-indent: -2em;
-       margin-bottom: 8px;
-       font-size: 8.5pt;
-       text-align: justify;
-   }
-   ```
-
----
-
-## 6. Ejecución y Compilación Automatizada
-
-Para compilar cualquier archivo HTML con esta arquitectura:
-
+### 3.3. Compilación de PDF
 ```bash
-python3 scripts/compile_pdf.py entrada.html salida.pdf [weasyprint|chromium]
+python3 scripts/compile_pdf.py entrada.html salida.pdf
 ```
-
-O desde código Python:
-```python
-import sys
-sys.path.append("/path/to/ufps-academic-pdf/scripts")
-from compile_pdf import compile_pdf
-
-compile_pdf("documento_temp.html", "Documento_Final.pdf", preferred_engine="weasyprint")
-```
+El motor utiliza automáticamente el navegador Chromium/Brave Headless en el sistema (o WeasyPrint) con banderas de precisión (`--no-pdf-header-footer`, `--run-all-compositor-stages-before-draw`).
 
 ---
 
-## 7. Reglas de Oro Editorial (Zero-Slop Guarantee)
+## 4. Generación de Presentaciones PowerPoint (PPTX 16:9)
 
-1. **Cero Texto Blanco sobre Blanco:** Todos los textos deben mantener un contraste estricto (mínimo ratio 4.5:1 de accesibilidad WCAG).
-2. **Prevención de Elementos Rotos:** Todas las tarjetas (`.blackboard-box`, `.speech-box`, `.trap-box`), tablas (`.trace-table`) e imágenes deben incluir `page-break-inside: avoid; break-inside: avoid;`.
-3. **Encabezados Nunca Huérfanos:** Todos los encabezados (`h1`, `h2`, `h3`) deben llevar `page-break-after: avoid; break-after: avoid;`.
-4. **Cero Ilustraciones IA Alucinadas:** Los gráficos deben ser diagramas vectoriales limpios (SVG/CSS Grid) con terminología en español técnico y riguroso.
+### 4.1. Directrices de Diapositivas Institucionales
+1. **Dimensiones Panorámicas:** Ancho `12192000` EMUs, Alto `6858000` EMUs (proporción 16:9).
+2. **Distintivo de Orador (*Speaker Badge*):**
+   Ubicado en la parte superior sobre el título principal para guiar el orden de participación:
+   ```
+   MÓDULO 01 | ANDRÉS MARTÍNEZ [00:00 - 03:00]
+   ```
+   Fuente: 10pt negrita, color `#C8102E`.
+3. **Jerarquía Tipográfica:**
+   - Título de Diapositiva: 20pt a 22pt, negrita, Dark Slate (`#0F172A`).
+   - Subtítulo o Eje Temático: 12pt a 14pt, negrita, Rojo UFPS (`#CC0000`).
+   - Viñetas de Contenido: 11pt a 12pt, interlineado cómodo, Slate (`#334155`).
+4. **Cero Ilustraciones IA Alucinadas (Zero AI-Slop):**
+   Las diapositivas técnicas de ingeniería nunca deben llevar imágenes de estilo "cyberpunk" o palabras deformes. En su lugar, se compilan diagramas vectoriales limpios (4:3) renderizados a 1200x900 con `scripts/diagram_generator.py`.
+5. **Manipulación OpenXML con Python Nativo:**
+   Utilizar `zipfile` y `xml.etree.ElementTree` sobre `templates/ufps_panoramica_base.pptx` para editar `ppt/slides/slide*.xml` sin requerir software privativo o librerías externas.
+
+---
+
+## 5. Protocolo de Verificación Pre-Entrega
+
+Antes de entregar cualquier material académico al usuario, verifica:
+1. **En Documentos PDF:**
+   - Ejecutar `pdfinfo` para certificar que el número de páginas es exacto y no existen páginas en blanco intermedias o finales.
+   - Comprobar que todas las tarjetas tengan `page-break-inside: avoid;` y los encabezados `page-break-after: avoid;`.
+2. **En Presentaciones PPTX:**
+   - Verificar la ausencia de textos blancos sobre fondos blancos (`FFFFFF` sobre contenedor claro).
+   - Comprobar que no existan directivas `a:srcRect` que recorten involuntariamente los diagramas.
+   - Verificar que el logotipo UFPS y el pie de acreditación Icontec no colisionen con los cuadros de texto.

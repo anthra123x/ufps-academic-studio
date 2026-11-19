@@ -1,56 +1,53 @@
-# UFPS Academic PDF Designer (Antigravity Skill)
+# UFPS Academic Studio (Antigravity Skill)
 
-Skill especializada para el diseño, maquetación y compilación de documentos académicos en PDF de alta calidad editorial (estilo IEEE/APA 7ma edición y directrices institucionales de la Universidad Francisco de Paula Santander Seccional Ocaña).
+Suite y skill integral para el diseño, maquetación y generación automatizada de **documentos académicos en PDF** y **presentaciones panorámicas en PowerPoint (PPTX)** bajo la identidad visual de la Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña y normas APA 7ma edición.
 
 ---
 
 ## Estructura del Repositorio
 
 ```
-ufps-academic-pdf/
-├── SKILL.md                     # Definición formal de la skill para Antigravity
+ufps-academic-studio/
+├── SKILL.md                     # Directiva técnica de activación para el agente Antigravity
 ├── README.md                    # Documentación del repositorio
-├── assets/                      # Logotipos y recursos gráficos vectoriales y rasterizados
-│   ├── logo_ufps.png
-│   └── logo_ufpso.png
-├── references/                  # Especificación del sistema de diseño y tokens
-│   ├── DESIGN_SYSTEM.md
-│   └── design_tokens.json
-├── templates/                   # Plantillas HTML/CSS reutilizables
-│   ├── common_styles.css
-│   ├── study_guide.html
-│   └── research_paper.html
-└── scripts/                     # Motores y utilidades de compilación automatizada
-    ├── compile_pdf.py
-    └── design_tokens.py
+├── assets/                      # Logotipos y recursos gráficos vectoriales
+│   ├── logo_ufps.png            # Escudo heráldico tradicional
+│   └── logo_ufpso.png           # Logotipo institucional Seccional Ocaña
+├── references/                  # Especificaciones del sistema de diseño
+│   ├── DESIGN_SYSTEM.md         # Manual exhaustivo de diseño, retículas y tipografías
+│   └── design_tokens.json       # Tokens de diseño en formato JSON
+├── templates/                   # Plantillas reutilizables
+│   ├── common_styles.css        # CSS Paged Media (@page) institucional
+│   ├── study_guide.html         # Plantilla de guía de estudio oral en tablero
+│   ├── research_paper.html      # Plantilla de trabajo formal APA 7ma edición
+│   └── ufps_panoramica_base.pptx # Plantilla PPTX oficial 16:9 widescreen
+└── scripts/                     # Motores y utilidades en Python nativo
+    ├── compile_pdf.py           # Compilador híbrido HTML a PDF (Brave/Chromium/WeasyPrint)
+    ├── pptx_engine.py           # Motor de manipulación y validación OpenXML de PPTX
+    ├── diagram_generator.py     # Generador de diagramas vectoriales 1200x900 (Zero AI-Slop)
+    └── design_tokens.py         # Constantes de diseño para scripts Python
 ```
 
 ---
 
 ## Instalación en Antigravity
 
-Para que cualquier sesión de Antigravity (o agentes compatibles) cargue esta skill automáticamente:
+La skill se encuentra enlazada al directorio global de configuraciones para ser descubierta de forma automática por cualquier sesión de Antigravity:
 
 ```bash
-# Crear enlace simbólico en el directorio global de skills
-ln -s "/home/omicron/Documentos/skills/ufps-academic-pdf" "$HOME/.gemini/config/skills/ufps-academic-pdf"
+ln -s "/home/omicron/Documentos/skills/ufps-academic-studio" "$HOME/.gemini/config/skills/ufps-academic-studio"
 ```
 
 ---
 
-## Características Principales
+## Capacidades
 
-1. **CSS Paged Media Nativo:** Configuración de páginas tamaño carta con encabezados institucionales (`@top-left`, `@top-right`) y pie de página con conteo de páginas (`@bottom-right: counter(page) " de " counter(pages)`).
-2. **Componentes para Exposiciones en Tablero:**
-   - `.blackboard-box`: Especificación visual de diagramas y trazos en pizarra con marcador.
-   - `.speech-box`: Guion oral cronometrado segundo a segundo para oratoria fluida.
-   - `.trap-box`: Batería de preguntas trampa de docentes con respuestas de 5.0.
-   - `.trace-table`: Tablas de estados algorítmicos (pilas, colas, árboles, grafos).
-3. **Normas APA 7ma Edición:** Portadas institucionales formales, tablas de contenido sincronizadas en dos fases, referencias con sangría francesa y figuras numeradas.
-4. **Motor Híbrido de Compilación:** Compilación primaria vía WeasyPrint con fallback transparente a Chromium/Chrome Headless.
-
----
-
-## Licencia y Uso
-
-Uso académico exclusivo para proyectos del Plan de Estudios de Ingeniería de Sistemas de la UFPS Seccional Ocaña.
+1. **Documentos Académicos en PDF:**
+   - Guías de sustentación oral para defensas en tablero sin diapositivas.
+   - Trabajos de investigación formal (portadas institucionales, tablas de contenido sincronizadas en dos fases, referencias con sangría francesa).
+   - Componentes didácticos: `.blackboard-box`, `.speech-box`, `.trap-box`, `.trace-table`.
+2. **Presentaciones PowerPoint Panorámicas (16:9):**
+   - Plantilla institucional UFPS con sellos Icontec / IQNET.
+   - Speaker Badges cronometrados (`MÓDULO XX | ESTUDIANTE [00:00 - 03:00]`).
+   - Diagramas técnicos de ingeniería en alta definición (1200x900 PNG) eliminando imágenes de IA alucinadas.
+   - Cero textos blancos sobre fondo blanco.
