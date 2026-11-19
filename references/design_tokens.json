@@ -1,0 +1,46 @@
+{
+  "name": "ufps-academic-design-tokens",
+  "version": "1.0.0",
+  "institution": {
+    "name": "Universidad Francisco de Paula Santander",
+    "seccional": "Seccional Ocaña",
+    "faculty": "Facultad de Ingenierías",
+    "program": "Plan de Estudios de Ingeniería de Sistemas"
+  },
+  "colors": {
+    "primary": "#C8102E",
+    "primary_dark": "#99001A",
+    "secondary": "#0F172A",
+    "text_dark": "#0F172A",
+    "text_body": "#1E293B",
+    "text_muted": "#64748B",
+    "border_subtle": "#CBD5E1",
+    "border_light": "#E2E8F0",
+    "bg_card": "#F8FAFC",
+    "bg_blackboard": "#0F172A",
+    "border_blackboard": "#38BDF8",
+    "text_blackboard": "#F8FAFC",
+    "alert_bg": "#FEF2F2",
+    "alert_border": "#EF4444",
+    "alert_text": "#991B1B",
+    "success_bg": "#F0FDF4",
+    "success_border": "#22C55E",
+    "success_text": "#166534"
+  },
+  "typography": {
+    "font_family_base": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "font_family_mono": "ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace",
+    "title_size": "19pt",
+    "h1_size": "12.5pt",
+    "h2_size": "10.5pt",
+    "body_size": "9.2pt",
+    "caption_size": "7.5pt"
+  },
+  "page": {
+    "size": "letter",
+    "margin_top": "18mm",
+    "margin_bottom": "18mm",
+    "margin_left": "16mm",
+    "margin_right": "16mm"
+  }
+}
