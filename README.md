@@ -35,7 +35,7 @@ ufps-academic-studio/
 La skill se encuentra enlazada al directorio global de configuraciones para ser descubierta de forma automática por cualquier sesión de Antigravity:
 
 ```bash
-ln -s "/home/omicron/Documentos/skills/ufps-academic-studio" "$HOME/.gemini/config/skills/ufps-academic-studio"
+ln -s "/home/omicron/Documentos/ufps-academic-studio" "$HOME/.gemini/config/skills/ufps-academic-studio"
 ```
 
 ---

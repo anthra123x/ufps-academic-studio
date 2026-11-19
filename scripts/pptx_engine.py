@@ -68,3 +68,4 @@ if __name__ == "__main__":
     p = sys.argv[1]
     count = get_slide_count(p)
     print(f"Diapositivas encontradas: {count}")
+

@@ -96,3 +96,4 @@ if __name__ == "__main__":
         print(f"✓ Diagrama generado: {sys.argv[2]}")
     else:
         print(f"✗ Fallo generando {sys.argv[2]}", file=sys.stderr)
+
