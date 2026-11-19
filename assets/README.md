@@ -41,3 +41,4 @@ Comprobar la existencia y legibilidad de los archivos de imagen:
 file assets/logo_ufpso.png assets/logo_ufps.png
 python3 -c "import os; assert os.path.getsize('assets/logo_ufpso.png') > 0 and os.path.getsize('assets/logo_ufps.png') > 0; print('Recursos graficos validados')"
 ```
+

@@ -60,3 +60,4 @@ python3 scripts/compile_pdf.py --help
 python3 scripts/diagram_generator.py --help
 python3 scripts/pptx_engine.py templates/ufps_panoramica_base.pptx
 ```
+

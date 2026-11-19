@@ -72,3 +72,4 @@ Inspeccionar integridad de la plantilla PPTX y validar la sintaxis CSS:
 python3 -c "import zipfile; z = zipfile.ZipFile('templates/ufps_panoramica_base.pptx'); print('Archivos en PPTX:', len(z.namelist()))"
 test -f templates/common_styles.css && echo "common_styles.css presente y accesible"
 ```
+

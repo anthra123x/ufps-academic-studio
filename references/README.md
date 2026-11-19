@@ -41,3 +41,4 @@ Validar la integridad sintactica del archivo JSON de tokens:
 ```bash
 python3 -m json.tool references/design_tokens.json > /dev/null && echo "JSON de tokens valido"
 ```
+
