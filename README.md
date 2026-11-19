@@ -106,7 +106,9 @@ Estructura interna de la skill documentada por componentes técnicos independien
 
 | Módulo | Ruta en Repositorio | Responsabilidad Técnica | Documentación Local |
 | :--- | :--- | :--- | :--- |
-| **Scripts** | `scripts/` | Motores ejecutables consumidos por el agente para compilar PDF, manipular OpenXML y renderizar diagramas. | [scripts/README.md](file:///home/omicron/Documentos/ufps-academic-studio/scripts/README.md) |
+| **Paquete Nativo Python** | `ufps_academic_studio/` | API orientada a objetos de alto nivel con clases nativas para los 4 formatos académicos (`AcademicPaper`, `StudyGuide`, `WorkshopSolution`, `SlideDeck`), compilador directo y diagramas. | [ufps_academic_studio/README.md](file:///home/omicron/Documentos/ufps-academic-studio/ufps_academic_studio/README.md) |
+| **Ejemplos de Integración** | `examples/` | Guiones ejecutables de validación de extremo a extremo para los cuatro formatos académicos. | [examples/README.md](file:///home/omicron/Documentos/ufps-academic-studio/examples/README.md) |
+| **Scripts de Soporte** | `scripts/` | Motores ejecutables auxiliares para compilar PDF, manipular OpenXML y renderizar diagramas individuales. | [scripts/README.md](file:///home/omicron/Documentos/ufps-academic-studio/scripts/README.md) |
 | **Plantillas** | `templates/` | Hojas de estilo CSS Paged Media, maquetas semánticas HTML y presentación maestra PPTX 16:9. | [templates/README.md](file:///home/omicron/Documentos/ufps-academic-studio/templates/README.md) |
 | **Referencias** | `references/` | Manual maestro de diseño editorial universitario y tokens formales en JSON. | [references/README.md](file:///home/omicron/Documentos/ufps-academic-studio/references/README.md) |
 | **Recursos Gráficos** | `assets/` | Escudos heráldicos y logotipos vectoriales/matriciales con canal alfa transparente. | [assets/README.md](file:///home/omicron/Documentos/ufps-academic-studio/assets/README.md) |

@@ -7,142 +7,199 @@ description: >-
   sin AI-slop) para la Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña.
 ---
 
-# UFPS Academic Studio: Suite Editorial Universitaria
+# UFPS Academic Studio: Suite Editorial Universitaria Versátil
 
-Esta skill proporciona el ecosistema integral de diseño, maquetación, estándares visuales y motores de automatización en Python para producir tanto **documentos académicos en PDF** como **presentaciones panorámicas en PowerPoint (PPTX)** con calificación de excelencia (5.0) para la **Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña**, específicamente en el área de **Ingeniería de Sistemas** y ciencias exactas.
+`ufps-academic-studio` es el estándar y motor oficial para la generación de entregables académicos de excelencia (calificación 5.0) en la **Universidad Francisco de Paula Santander (UFPS) Seccional Ocaña**, específicamente en el Plan de Estudios de **Ingeniería de Sistemas** y ciencias afines.
 
----
-
-## 1. Cuándo Activar esta Skill
-
-Activa esta skill inmediatamente cuando el usuario solicite:
-1. **Documentos Académicos en PDF:**
-   - Guías de estudio individual cronometradas para exposiciones (en tablero sin diapositivas o como apoyo).
-   - Trabajos de investigación formal (normas APA 7ma edición, portadas institucionales, tablas de contenido sincronizadas en dos fases).
-   - Solucionarios de talleres, parciales y exámenes prácticos (matemáticas discretas, estructuras de datos, algoritmia, redes).
-2. **Presentaciones PowerPoint (PPTX 16:9):**
-   - Diapositivas panorámicas con la plantilla oficial UFPS Seccional Ocaña.
-   - Distribución cronometrada y badges de orador (`MÓDULO XX | ESTUDIANTE [00:00 - 03:00]`).
-   - Sustitución de ilustraciones genéricas/alucinadas por **diagramas técnicos vectoriales de ingeniería** (1200x900, 4:3, HTML/CSS Grid compilados a PNG).
-   - Auditoría estricta de contraste (cero textos blancos sobre fondos claros).
+La skill proporciona una API unificada en Python (`AcademicPaper`, `StudyGuide`, `WorkshopSolution`, `SlideDeck`, `UFPSDiagram`) que permite generar los cuatro formatos académicos fundamentales en una sola pasada, sin requerir scripts auxiliares desechables ni maquetar HTML crudo manualmente.
 
 ---
 
-## 2. Identidad Visual Institucional UFPS
+## 1. Los 4 Formatos Académicos Soportados
 
-### 2.1. Paleta de Colores Oficial
-| Token | Código HEX | Rol y Aplicación |
-| :--- | :---: | :--- |
-| `UFPS_RED` | `#C8102E` / `#CC0000` | Rojo Institucional UFPS. Acentos, separadores H1, barras laterales, badges. |
-| `SLATE_TITLE` | `#0F172A` | Títulos principales, fondos oscuros de pizarra escolar, contraste máximo. |
-| `SLATE_BODY` | `#1E293B` / `#334155` | Cuerpo de texto, viñetas de diapositivas, contenido técnico justificado. |
-| `SLATE_MUTED` | `#64748B` | Subtítulos secundarios, etiquetas de tiempo, encabezados de pie de página. |
-| `BORDER_SUBTLE`| `#CBD5E1` / `#E2E8F0` | Retículas de tablas, separadores de página, bordes de tarjetas. |
-| `BG_CARD` | `#F8FAFC` | Fondo de guiones orales, cajas de código y tarjetas de conceptos. |
-| `BG_BLACKBOARD`| `#0F172A` | Fondo de pizarra para instrucciones de trazo con marcador en clase. |
-| `BORDER_CHALK` | `#38BDF8` | Acento cian brillante simulando marcador de borrado en seco / tiza. |
-| `BG_ALERT` | `#FEF2F2` | Fondo de cajas de preguntas trampa de sustentación individual. |
-| `BORDER_ALERT`| `#EF4444` | Borde rojo para destacar objeciones docentes y defensas de 5.0. |
-
-### 2.2. Recursos Gráficos
-- `assets/logo_ufpso.png`: Escudo y logotipo oficial de la Seccional Ocaña en alta resolución.
-- `assets/logo_ufps.png`: Escudo heráldico tradicional.
-- `templates/ufps_panoramica_base.pptx`: Plantilla OpenXML panorámica oficial de 17 diapositivas con logotipo a color oficial UFPS en la esquina superior derecha (`x=9454331, y=314675, cx=2405046, cy=650058`) y acreditación Icontec / IQNET.
+| Formato | Clase Python | Casos de Uso Típicos | Características Clave de Diseño |
+| :--- | :--- | :--- | :--- |
+| **1. Trabajo de Investigación Formal** | `AcademicPaper` | Parciales teóricos (40%), proyectos finales, papers e informes de fin de materia. | Portada institucional formal con tabla de autores y códigos UFPS en rojo, índice analítico con puntos de relleno, encabezados institucionales (`@top-left`, `@top-right`), ecuaciones numeradas `(1)`, tarjetas comparativas de 3 columnas, figuras APA 7ma y referencias con sangría francesa. |
+| **2. Guía de Estudio Oral en Tablero** | `StudyGuide` | Exposiciones magistrales en tarima sin diapositivas (ej. Matemáticas Discretas). | Ficha técnica de orador y tiempo asignado, caja de pizarra (`.blackboard-box`) con instrucciones de marcador, guion oral cronometrado (`.speech-box`), batería de preguntas trampa de defensa 5.0 (`.trap-box`), tablas de traza y frase de transición entre compañeros. |
+| **3. Solucionario de Taller / Examen** | `WorkshopSolution` | Solución de talleres prácticos (ej. Taller 4), guías de ejercicios matemáticos o de código. | Encabezado institucional compacto, tarjetas de ejercicios numeradas (`.exercise-box`), enunciados en recuadro neutro, desarrollo técnico paso a paso con código y cajas verdes de tips de evaluación docente. |
+| **4. Presentación Panorámica 16:9** | `SlideDeck` | Sustentaciones grupales con proyección (ej. Segundo Parcial de Introducción). | Plantilla oficial UFPS de 17 diapositivas con sello Icontec/IQNET, badges de orador cronometrados (`MÓDULO XX \| ESTUDIANTE [00:00 - 03:00]`), diagramas técnicos vectoriales (4:3 / 1200x900) y cero texto blanco sobre fondos claros. |
 
 ---
 
-## 3. Generación de Documentos PDF (CSS Paged Media)
+## 2. Identidad Visual y Tokens Institucionales
 
-### 3.1. Estructura Base de Página (@page)
-```css
-@page {
-    size: letter;
-    margin: 18mm 16mm 18mm 16mm;
-    
-    @top-left {
-        content: "UNIVERSIDAD FRANCISCO DE PAULA SANTANDER SECCIONAL OCAÑA · INGENIERÍA DE SISTEMAS";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 7.2pt;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        color: #64748B;
-        border-bottom: 0.5px solid #CBD5E1;
-        padding-bottom: 4px;
-    }
-    @top-right {
-        content: "[ASIGNATURA] · [EVALUACIÓN]";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 7.2pt;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        color: #C8102E;
-        border-bottom: 0.5px solid #CBD5E1;
-        padding-bottom: 4px;
-    }
-    @bottom-left {
-        content: "[Título del Módulo o Documento]";
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 7.2pt;
-        font-style: italic;
-        color: #64748B;
-        border-top: 0.5px solid #E2E8F0;
-        padding-top: 4px;
-    }
-    @bottom-right {
-        content: "Página " counter(page) " de " counter(pages);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 7.2pt;
-        font-weight: 700;
-        color: #1E293B;
-        border-top: 0.5px solid #E2E8F0;
-        padding-top: 4px;
-    }
-}
+- **Paleta Cromática Oficial:**
+  - `UFPS_RED`: `#C8102E` (Rojo UFPS oficial para acentos, divisores H1, códigos de estudiante y badges).
+  - `SLATE_TITLE`: `#0F172A` (Títulos principales, fondos de pizarra escolar, contraste máximo).
+  - `SLATE_BODY`: `#1E293B` / `#334155` (Texto de cuerpo técnico justificado, line-height 1.48).
+  - `SLATE_MUTED`: `#64748B` (Subtítulos, encabezados de pie de página, roles).
+  - `BORDER_SUBTLE`: `#CBD5E1` / `#E2E8F0` (Bordes de retículas y tablas).
+  - `CHALK_CYAN`: `#38BDF8` (Tiza cian en cajas de pizarra escolar).
+
+- **Márgenes y Paginación (@page):**
+  - Formato: Carta (*Letter*), márgenes de `17mm 15mm 17mm 15mm`.
+  - Primera página (`@page:first`): Márgenes de `14mm`, cabeceras y pies suprimidos para la portada.
+  - Páginas interiores: Encabezados automáticos y pie con `Página counter(page) de counter(pages)`.
+
+---
+
+## 3. Guía de Uso por Formato
+
+### 3.1. Formato 1: Trabajo de Investigación Formal (APA 7ma Edición)
+```python
+from ufps_academic_studio import AcademicPaper
+
+paper = AcademicPaper(
+    title="INTELIGENCIA ARTIFICIAL Y TRANSFORMACIÓN DIGITAL",
+    subtitle="Fundamentos Epistemológicos, Arquitecturas de Software y Prototipo RAG en Rust",
+    activity="DOCUMENTO DE INVESTIGACIÓN · SEGUNDO PARCIAL (40%)",
+    course="INTRODUCCIÓN A LA INGENIERÍA DE SISTEMAS",
+    teacher="Docente de la Asignatura",
+    date="Noviembre de 2026",
+    authors=[
+        {"name": "Andrés Camilo Martínez Vanegas", "role": "Líder", "code": "192977", "module": "Fundamentos e Historia"},
+        {"name": "Juan Diego Antonio Sánchez Clavijo", "role": "", "code": "192969", "module": "Ecosistema Técnico (ML, Transformers)"}
+    ]
+)
+
+paper.add_section("1. INTRODUCCIÓN", "<p>Texto formal...</p>")
+paper.add_section("2. OBJETIVOS")
+paper.add_subsection("2.1 Objetivo General", "<p>Analizar el impacto...</p>")
+
+# Matriz comparativa de 3 fases continuas
+paper.add_comparative_cards([
+    {"title": "1. Digitización", "content": "<p>De analógico a binario.</p>"},
+    {"title": "2. Digitalización", "content": "<p>Automatización Cloud/ERP.</p>"},
+    {"title": "3. Transformación", "content": "<p>Decisiones con IA en tiempo real.</p>"}
+])
+
+# Ecuaciones centradas con numeración correlativa
+paper.add_equation("Attention(Q, K, V) = softmax ( \\frac{Q \\cdot K^T}{\\sqrt{d_k}} ) \\cdot V", num=1)
+
+# Referencias con sangría francesa estricta
+paper.add_references([
+    "Russell, S. J., & Norvig, P. (2020). <em>Artificial Intelligence: A Modern Approach</em> (4th ed.). Pearson.",
+    "Universidad Francisco de Paula Santander [UFPS]. (2019). <em>Acuerdo No. 051 de 2019</em>. Consejo Superior."
+])
+
+paper.render("00_TRABAJO_ESCRITO.pdf")
 ```
 
-### 3.2. Componentes Visuales Exclusivos
-- **Caja de Pizarra (`.blackboard-box`):** Fondo `#0F172A`, borde `#38BDF8`, texto claro con instrucciones exactas de qué dibujar en el pizarrón.
-- **Caja de Guion Oral (`.speech-box`):** Fondo `#F8FAFC`, barra lateral `#C8102E`, con el discurso exacto segundo a segundo.
-- **Caja Trampa (`.trap-box`):** Fondo `#FEF2F2`, borde `#EF4444`, preguntas complejas del profesor con respuestas de 5.0.
-- **Tabla de Trazabilidad (`.trace-table`):** Encabezados oscuros `#1E293B`, filas alternas `#F8FAFC`, bordes nítidos `#CBD5E1`.
-- **Citas APA 7ma (`.apa-reference`):** Sangría francesa (`padding-left: 2em; text-indent: -2em;`).
+---
 
-### 3.3. Compilación de PDF
-```bash
-python3 scripts/compile_pdf.py entrada.html salida.pdf
+### 3.2. Formato 2: Guía Individual de Estudio Oral para Tablero
+```python
+from ufps_academic_studio import StudyGuide
+
+guide = StudyGuide(
+    module_num=2,
+    title="RECORRIDO EN PREORDEN (PREORDER TRAVERSAL)",
+    student_name="Estudiante 2 (Andrés Martínez)",
+    time_range="03:30 – 07:00 min",
+    role_name="Recorridos en Profundidad",
+    course="MATEMÁTICAS DISCRETAS",
+    activity="EXPOSICIÓN MAGISTRAL EN TABLERO",
+    subtitle="Definición formal recursiva, técnica gráfica del contorno por la izquierda y algoritmo con pilas LIFO."
+)
+
+guide.add_theory(
+    "1. FUNDAMENTACIÓN MATEMÁTICA (KENNETH ROSEN, SEC. 11.3)",
+    "<p>El recorrido en preorden visita los nodos en la secuencia <strong>Raíz → Izquierdo → Derecho</strong>.</p>"
+)
+
+# Qué dibujar con marcador en la pizarra
+guide.add_blackboard_box(
+    "¿QUÉ DIBUJAR EN EL TABLERO CON MARCADOR?",
+    [
+        "Traza el árbol binario de 7 nodos en el cuadrante superior izquierdo.",
+        "Con marcador rojo, traza la curva de contorno por el flanco izquierdo de cada nodo.",
+        "Dibuja la tabla de seguimiento de la Pila LIFO."
+    ]
+)
+
+# Guion oral cronometrado
+guide.add_speech_box(
+    "GUION ORAL (03:30 – 05:00 MIN)",
+    "Buenos días, profesor y compañeros. En este módulo explicaré el recorrido en preorden..."
+)
+
+# Pregunta trampa y respuesta 5.0
+guide.add_trap_box(
+    "¿Por qué se apila primero el hijo derecho y luego el izquierdo?",
+    "Porque la pila es LIFO; al apilar el derecho primero, el izquierdo queda en el tope y se procesa antes."
+)
+
+guide.add_transition(
+    next_speaker="Estudiante 3",
+    transition_text="Cedo la palabra a mi compañero para explicar el recorrido en Inorden."
+)
+
+guide.render("02_Guia_Preorden.pdf")
 ```
-El motor utiliza automáticamente el navegador Chromium/Brave Headless en el sistema (o WeasyPrint) con banderas de precisión (`--no-pdf-header-footer`, `--run-all-compositor-stages-before-draw`).
 
 ---
 
-## 4. Generación de Presentaciones PowerPoint (PPTX 16:9)
+### 3.3. Formato 3: Solucionario de Taller / Examen Práctico
+```python
+from ufps_academic_studio import WorkshopSolution
 
-### 4.1. Directrices de Diapositivas Institucionales
-1. **Dimensiones Panorámicas:** Ancho `12192000` EMUs, Alto `6858000` EMUs (proporción 16:9).
-2. **Distintivo de Orador (*Speaker Badge*):**
-   Ubicado en la parte superior sobre el título principal para guiar el orden de participación:
-   ```
-   MÓDULO 01 | ANDRÉS MARTÍNEZ [00:00 - 03:00]
-   ```
-   Fuente: 10pt negrita, color `#C8102E`.
-3. **Jerarquía Tipográfica:**
-   - Título de Diapositiva: 20pt a 22pt, negrita, Dark Slate (`#0F172A`).
-   - Subtítulo o Eje Temático: 12pt a 14pt, negrita, Rojo UFPS (`#CC0000`).
-   - Viñetas de Contenido: 11pt a 12pt, interlineado cómodo, Slate (`#334155`).
-4. **Cero Ilustraciones IA Alucinadas (Zero AI-Slop):**
-   Las diapositivas técnicas de ingeniería nunca deben llevar imágenes de estilo "cyberpunk" o palabras deformes. En su lugar, se compilan diagramas vectoriales limpios (4:3) renderizados a 1200x900 con `scripts/diagram_generator.py`.
-5. **Manipulación OpenXML con Python Nativo:**
-   Utilizar `zipfile` y `xml.etree.ElementTree` sobre `templates/ufps_panoramica_base.pptx` para editar `ppt/slides/slide*.xml` sin requerir software privativo o librerías externas.
+ws = WorkshopSolution(
+    title="SOLUCIONARIO: TALLER 4 - TECNOLOGÍA EN LA VIDA REAL",
+    course="INTRODUCCIÓN A LA INGENIERÍA DE SISTEMAS",
+    student_name="Andrés Camilo Martínez Vanegas",
+    student_code="192977"
+)
+
+ws.add_exercise(
+    num=1,
+    title="Optimización de Consultas en Bases de Datos",
+    statement="Una consulta sobre 50 millones de registros tarda 14 segundos. Proponga la solución.",
+    solution="<p>Se implementa un índice compuesto B-Tree y particionamiento mensual, reduciendo el costo a 8 ms.</p>",
+    exam_tip="Explica en sustentación la diferencia entre Full Table Scan y búsqueda por índice B-Tree."
+)
+
+ws.render("Taller_4_Solucion.pdf")
+```
 
 ---
 
-## 5. Protocolo de Verificación Pre-Entrega
+### 3.4. Formato 4: Presentación Panorámica 16:9 (PPTX)
+```python
+from ufps_academic_studio import SlideDeck, UFPSDiagram
 
-Antes de entregar cualquier material académico al usuario, verifica:
-1. **En Documentos PDF:**
-   - Ejecutar `pdfinfo` para certificar que el número de páginas es exacto y no existen páginas en blanco intermedias o finales.
-   - Comprobar que todas las tarjetas tengan `page-break-inside: avoid;` y los encabezados `page-break-after: avoid;`.
-2. **En Presentaciones PPTX:**
-   - Verificar la ausencia de textos blancos sobre fondos blancos (`FFFFFF` sobre contenedor claro).
-   - Comprobar que no existan directivas `a:srcRect` que recorten involuntariamente los diagramas.
-   - Verificar que el logotipo UFPS y el pie de acreditación Icontec no colisionen con los cuadros de texto.
+# Diagrama vectorial limpio sin AI-slop
+UFPSDiagram.flow(
+    title="PIPELINE DE MLOPS EN PRODUCCIÓN",
+    steps=[
+        {"title": "DataOps", "desc": "Ingesta y validación de esquemas", "color": "#C8102E"},
+        {"title": "ModelOps", "desc": "Entrenamiento distribuido y tracking", "color": "#38BDF8"},
+        {"title": "DevOps", "desc": "Despliegue Canary y monitoreo", "color": "#4ADE80"}
+    ],
+    output_png="assets/mlops_flow.png"
+)
+
+# Presentación
+deck = SlideDeck(title="Segundo Parcial: IA y Transformación Digital")
+deck.add_slide(
+    title="Pipeline de MLOps en Producción",
+    subtitle="Orquestación integral de arquitecturas cognitivas",
+    speaker="Juan David Pérez",
+    time_range="06:00 - 09:00",
+    module_num=3,
+    bullets=[
+        "Automatización integral de ingeniería de características.",
+        "Monitoreo continuo de Data Drift y Concept Drift en la nube."
+    ],
+    diagram_image_path="assets/mlops_flow.png"
+)
+deck.save("Presentacion_Final.pptx")
+```
+
+---
+
+## 4. Checklist Editorial (Zero-Slop & Zero-Gap)
+
+1. **Cero Páginas en Blanco Intermedias:** Todos los componentes atómicos (`.card`, `.blackboard-box`, `.trap-box`, `.comparative-grid-3`, tablas) utilizan `break-inside: avoid !important`.
+2. **Cero Encabezados Solos:** Los títulos (`h1`, `h2`, `h3`, `h4`) llevan `break-after: avoid !important`.
+3. **Contraste 100% Accesible:** Prohibido el texto blanco sobre fondos claros; los textos sobre fondos oscuros usan blanco puro o tiza cian (`#38BDF8`).
+4. **Cero Ilustraciones IA Alucinadas:** Los gráficos de diapositivas e informes son diagramas vectoriales limpios (4:3 o 16:9) generados con `UFPSDiagram`.
