@@ -63,3 +63,4 @@ class SlideDeck:
 
         shutil.copyfile(self.base_template, out_abs)
         return os.path.exists(out_abs) and os.path.getsize(out_abs) > 0
+

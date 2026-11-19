@@ -103,3 +103,4 @@ class WorkshopSolution:
         """Compila el solucionario a PDF en una sola pasada."""
         html = self.build_html()
         return compile_pdf(html, output_pdf_path)
+

@@ -89,3 +89,4 @@ Ejecutar la validacion de sintaxis y los scripts de prueba en `examples/`:
 python3 -m py_compile ufps_academic_studio/*.py ufps_academic_studio/core/*.py ufps_academic_studio/formats/*.py
 python3 -c "import ufps_academic_studio; print('Paquete importado exitosamente')"
 ```
+

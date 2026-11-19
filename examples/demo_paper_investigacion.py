@@ -69,3 +69,4 @@ if success:
     print(f"✓ Paper académico UFPS generado exitosamente: {output_pdf} ({sz:.1f} KB)")
 else:
     print("✗ Error al generar el paper académico")
+

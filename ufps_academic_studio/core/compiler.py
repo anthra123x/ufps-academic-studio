@@ -55,3 +55,4 @@ def compile_pdf(html_content: str, output_pdf_path: str) -> bool:
     finally:
         if os.path.exists(temp_html):
             os.remove(temp_html)
+

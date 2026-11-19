@@ -53,3 +53,4 @@ python3 examples/demo_guia_estudio.py
 python3 examples/demo_solucionario_taller.py
 ls -lh /tmp/demo_*.pdf
 ```
+

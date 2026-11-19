@@ -30,3 +30,4 @@ __all__ = [
     "UFPS_RED",
     "SLATE_TITLE"
 ]
+

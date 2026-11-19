@@ -242,3 +242,4 @@ class AcademicPaper:
         """Compila el trabajo de investigación formal a PDF en una sola pasada."""
         html = self.build_html()
         return compile_pdf(html, output_pdf_path)
+

@@ -71,3 +71,4 @@ if success:
     print(f"✓ Guía de estudio UFPS generada exitosamente: {output_pdf} ({sz:.1f} KB)")
 else:
     print("✗ Error al generar la guía de estudio")
+

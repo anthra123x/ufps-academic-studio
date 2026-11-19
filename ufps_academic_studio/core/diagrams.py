@@ -97,3 +97,4 @@ class UFPSDiagram:
                 os.remove(temp_file)
 
         return os.path.exists(out_abs) and os.path.getsize(out_abs) > 0
+
